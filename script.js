@@ -1,7 +1,7 @@
 const torre1 = document.getElementById('torre1');
 const torre2 = document.getElementById('torre2');
 const torre3 = document.getElementById('torre3');
-const fim = document.getElementById('msg');
+const msg = document.getElementById('msg');
 
 let blocoAtual = '';
 
@@ -29,8 +29,11 @@ const validaJogada = (torreEscolhida) => {
         torreEscolhida.insertAdjacentElement('afterbegin', blocoAtual);
         blocoAtual = '';
     } else if (torreEscolhida.firstElementChild.clientWidth < blocoAtual.clientWidth) {
+        msgErro();
         blocoAtual = '';
     } 
+
+    final();
 }
 
 // BUTTON START GAME
@@ -47,7 +50,7 @@ const iniciarJogo = () => {
         let bloco = document.createElement('div');
         bloco.classList.add('bloco');
         bloco.id = 'bloco'+i;
-        container.appendChild(bloco);
+        torres[0].appendChild(bloco);
     }
 }
 btnStart.addEventListener('click', iniciarJogo);
@@ -61,3 +64,19 @@ const reiniciarJogo = () => {
     iniciarJogo();
 }
 btnRestart.addEventListener('click', reiniciarJogo);
+
+const final = () => {
+    if (torres[2].childElementCount === 4) {
+        msg.innerText = 'Conseguiu!!';
+        msg.style.color = 'green';
+    }
+}
+
+const msgErro = () => {
+    msg.innerText = 'Jogada Errada';
+        msg.style.color = 'red';
+
+        setTimeout(() => {
+            msg.innerText = '';
+        }, 1000);
+}
