@@ -33,27 +33,32 @@ const validaJogada = (torreEscolhida) => {
     } 
 }
 
+const btnStart = document.getElementById('btn-start'); 
+const btnRestart = document.getElementById('btn-restart');
 const container = document.getElementById('torre1');
-const gerarBlocos = () => {
-    container.innertext = '';
+const iniciarJogo = () => {
+    btnStart.style.display = 'none';
+    btnRestart.style.display = 'block';
 
-    const bloco1 = document.createElement('div');
-    const bloco2 = document.createElement('div');
-    const bloco3 = document.createElement('div');
-    const bloco4 = document.createElement('div');
+    for(let i=0; i<torres.length; i++) {
+        torres[i].style.display = 'flex';
+    }
 
-    bloco1.classList = ('bloco');
-    bloco2.classList = ('bloco');
-    bloco3.classList = ('bloco');
-    bloco4.classList = ('bloco');
-
-    bloco1.id = 'bloco1';
-    bloco2.id = 'bloco2';
-    bloco3.id = 'bloco3';
-    bloco4.id = 'bloco4';
-
-    container.appendChild(bloco1);
-    container.appendChild(bloco2);
-    container.appendChild(bloco3);
-    container.appendChild(bloco4);
+    for(let i=1; i <= 4; i++) {
+        const bloco = document.createElement('div');
+        bloco.classList.add('bloco');
+        bloco.id = 'bloco'+i;
+        container.appendChild(bloco);
+    }
 }
+btnStart.addEventListener('click', iniciarJogo);
+
+const blocos = document.getElementsByClassName('bloco');
+const reiniciarJogo = () => {
+    for(let i=blocos.length-1; i>=0; i--) {
+        torres[0].appendChild(blocos[i]);
+        console.log(blocos[i]);
+    }
+}
+
+btnRestart.addEventListener('click', reiniciarJogo);
