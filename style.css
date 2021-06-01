@@ -23,6 +23,7 @@ header {
 
 /* MAIN */
 main {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,6 +75,15 @@ button {
 
 #btn-restart {
     display: none;
+}
+
+#msg {
+    position: absolute;
+    transform: translate(50%, 50%);
+    right: 50%;
+    top: -10%;
+    font-weight: 600;
+    font-size: 2.5rem;
 }
 
 /* MEDIA QUERIES */
