@@ -81,6 +81,10 @@ const final = () => {
     if (torres[2].childElementCount === 4) {
         msg.innerText = 'Conseguiu!!';
         msg.style.color = 'green';
+
+        setTimeout(() => {
+            reiniciarJogo();
+        }, 5000);
     }
 }
 
