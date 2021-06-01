@@ -2,8 +2,12 @@ const torre1 = document.getElementById('torre1');
 const torre2 = document.getElementById('torre2');
 const torre3 = document.getElementById('torre3');
 const msg = document.getElementById('msg');
+const movimentos = document.getElementById('movimentos');
 
 let blocoAtual = '';
+
+let count = 0;
+
 
 const torres = document.querySelectorAll('.torre');
 torres.forEach((item) => {
@@ -24,15 +28,18 @@ const validaJogada = (torreEscolhida) => {
     
     if (torreEscolhida.childElementCount === 0) {
         torreEscolhida.insertAdjacentElement('afterbegin', blocoAtual);
+        count++
         blocoAtual = '';
     } else if (torreEscolhida.firstElementChild.clientWidth > blocoAtual.clientWidth) {
         torreEscolhida.insertAdjacentElement('afterbegin', blocoAtual);
+        count++
         blocoAtual = '';
     } else if (torreEscolhida.firstElementChild.clientWidth < blocoAtual.clientWidth) {
         msgErro();
         blocoAtual = '';
     } 
 
+    movimentos.innerText = `Movimentos: ${count}`;
     final();
 }
 
@@ -61,6 +68,11 @@ const reiniciarJogo = () => {
     torres.forEach((item) => {
         item.innerHTML = '';
     });
+    
+    msg.innerText = '';
+    count = 0;
+    movimentos.innerText = `Movimentos: ${count}`;;
+
     iniciarJogo();
 }
 btnRestart.addEventListener('click', reiniciarJogo);
