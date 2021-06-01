@@ -8,7 +8,6 @@ let blocoAtual = '';
 
 let count = 0;
 
-
 const torres = document.querySelectorAll('.torre');
 torres.forEach((item) => {
     item.addEventListener("click", escolhaTorre);
@@ -47,7 +46,7 @@ const validaJogada = (torreEscolhida) => {
 const btnStart = document.getElementById('btn-start'); 
 const iniciarJogo = () => {
     btnStart.style.display = 'none';
-    btnRestart.style.display = 'block';
+    btnRestart.style.display = 'inline-block';
 
     for(let i=0; i<torres.length; i++) {
         torres[i].style.display = 'flex';
