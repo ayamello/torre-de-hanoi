@@ -20,6 +20,15 @@ header {
         margin-bottom: 30px;
     }
 
+/* BUTTONS */
+#btn-start {
+    
+}
+
+#btn-restart {
+    display: none;
+}
+
 /* MAIN */
 main {
     display: flex;
@@ -31,7 +40,7 @@ main {
         width: 12px;
         height: 100px;
         margin: 20px;
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: flex-end;
