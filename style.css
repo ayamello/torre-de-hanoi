@@ -8,6 +8,7 @@ html, body, header, h1, main, div {
 
 .container{
     padding-top: 30px;
+    text-align: center;
 }
 
 /* HEADER */
@@ -19,15 +20,6 @@ header {
         text-transform: uppercase;
         margin-bottom: 30px;
     }
-
-/* BUTTONS */
-#btn-start {
-    
-}
-
-#btn-restart {
-    display: none;
-}
 
 /* MAIN */
 main {
@@ -67,6 +59,22 @@ main {
             width: 110px;
             background-color: #b84644;
         }
+
+/* BUTTONS */
+button {
+    border: none;
+    padding: 10px 30px;
+}
+    button:hover {
+        cursor: pointer;
+    }
+#btn-start {
+    vertical-align: middle;
+}
+
+#btn-restart {
+    display: none;
+}
 
 /* MEDIA QUERIES */
 @media (min-width: 1024px) {

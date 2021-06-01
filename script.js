@@ -47,7 +47,7 @@ const iniciarJogo = () => {
         let bloco = document.createElement('div');
         bloco.classList.add('bloco');
         bloco.id = 'bloco'+i;
-        container.appendChild(bloco);
+        torres[0].appendChild(bloco);
     }
 }
 btnStart.addEventListener('click', iniciarJogo);
