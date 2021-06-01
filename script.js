@@ -33,9 +33,8 @@ const validaJogada = (torreEscolhida) => {
     } 
 }
 
+// BUTTON START GAME
 const btnStart = document.getElementById('btn-start'); 
-const btnRestart = document.getElementById('btn-restart');
-const container = document.getElementById('torre1');
 const iniciarJogo = () => {
     btnStart.style.display = 'none';
     btnRestart.style.display = 'block';
@@ -43,9 +42,9 @@ const iniciarJogo = () => {
     for(let i=0; i<torres.length; i++) {
         torres[i].style.display = 'flex';
     }
-
+    
     for(let i=1; i <= 4; i++) {
-        const bloco = document.createElement('div');
+        let bloco = document.createElement('div');
         bloco.classList.add('bloco');
         bloco.id = 'bloco'+i;
         container.appendChild(bloco);
@@ -53,12 +52,12 @@ const iniciarJogo = () => {
 }
 btnStart.addEventListener('click', iniciarJogo);
 
-const blocos = document.getElementsByClassName('bloco');
+// BUTTON RESTART GAME
+const btnRestart = document.getElementById('btn-restart');
 const reiniciarJogo = () => {
-    for(let i=blocos.length-1; i>=0; i--) {
-        torres[0].appendChild(blocos[i]);
-        console.log(blocos[i]);
-    }
+    torres.forEach((item) => {
+        item.innerHTML = '';
+    });
+    iniciarJogo();
 }
-
 btnRestart.addEventListener('click', reiniciarJogo);
