@@ -97,9 +97,7 @@ btnRestart.addEventListener('click', reiniciarJogo);
 const final = () => {
     if (torres[2].childElementCount === 4) {
         mensagemFinal();
-        clearInterval(conometro);
-        main.style.display = 'none';
-        btnRestart = iniciarJogo;
+        clearInterval(conometro);       
     }
 }
 
@@ -115,6 +113,7 @@ const mensagemErr = () => {
 const mensagemFinal = () => {
     msg.innerHTML = 'Parabéns, você conseguiu!';
     msg.style.color = 'green';
+    msg.style.backgroundColor = '#00800092';
 }
 
 const timeContent = document.getElementById('time-content');
