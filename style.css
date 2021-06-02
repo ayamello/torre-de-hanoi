@@ -23,7 +23,13 @@ header {
         font-size: 12vw;
         font-family: 'Londrina Solid';
         text-transform: uppercase;
-        margin-bottom: 30px;
+    }
+    header #counts {
+        width: 60%;
+        margin: 0 auto;
+        font-family: 'Londrina Solid';
+        font-weight: 100;
+        font-size: 1em;
     }
 
 /* MAIN */
@@ -33,7 +39,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: -50px;
+    margin-top: -10px;
 }
     main .torre {
         width: 12px;
