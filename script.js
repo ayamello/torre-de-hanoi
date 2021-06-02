@@ -34,6 +34,8 @@ const iniciarJogo = () => {
     torres.forEach((item) => {
         item.addEventListener("click", escolhaTorre);
     });
+
+    time();
 }
 btnStart.addEventListener('click', iniciarJogo);
 
@@ -45,6 +47,7 @@ function escolhaTorre(e) {
     const torreEscolhida = e.currentTarget;
 
     validaJogada(torreEscolhida);
+    
 }
 
 const validaJogada = (torreEscolhida) => {
@@ -83,13 +86,16 @@ const reiniciarJogo = () => {
     movimentos.innerText = `Movimentos: ${count}`;
 
     criarBlocos();
+    clearInterval(conometro);
+    time();
 }
 btnRestart.addEventListener('click', reiniciarJogo);
 
 // MENSAGEM FINAL
 const final = () => {
     if (torres[2].childElementCount === 4) {
-        mensagem('Parabéns, você conseguiu!', 'green', 3000)
+        mensagem('Parabéns, você conseguiu!', 'green', 3000);
+        clearInterval(conometro);
 
         setTimeout(() => {
             reiniciarJogo();
@@ -106,3 +112,45 @@ const mensagem = (texto, cor, tempo) => {
         msg.innerText = '';
     }, tempo);
 }
+
+const timeContent = document.getElementById('time-content');
+let conometro;
+
+const time = () => {
+    let minuto = 0;
+    let segundo = 0;
+    let cent = 0;
+
+    conometro = setInterval(() => {
+        cent++;
+        if (cent === 100) {
+            segundo++;
+            cent = 0;
+            if (segundo === 60) {
+                minuto++
+                segundo = 0;
+            }
+        }
+
+        showTime(minuto, segundo, cent)
+    }, 10)
+}
+
+const showTime = (min, seg, cen) => {
+    // FORMATAÇÃO PARA 2 DIGITOS
+    
+    // if (cen < 10 && seg < 10 && min < 10) {
+    //     timeContent.innerText = `0${min} : 0${seg} : 0${cen}`
+    // }
+    // if (cen < 10 && seg < 10 && min >= 10) {
+    //     timeContent.innerText = `${min} : 0${seg} : 0${cen}`
+    // }
+    // if (cen < 10 && seg >= 10 && min >= 10) {
+    //     timeContent.innerText = `${min} : ${seg} : 0${cen}`
+    // } 
+    // if (cen >= 10 && seg >= 10 && min >= 10) {
+    //     timeContent.innerText = `${min} : ${seg} : ${cen}`
+    // }
+    timeContent.innerText = `${min} : ${seg} : ${cen}`;
+}
+
