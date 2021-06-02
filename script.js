@@ -1,6 +1,3 @@
-const torre1 = document.getElementById('torre1');
-const torre2 = document.getElementById('torre2');
-const torre3 = document.getElementById('torre3');
 const msg = document.getElementById('msg');
 const movimentos = document.getElementById('movimentos');
 
@@ -15,7 +12,6 @@ torres.forEach((item) => {
 
 function escolhaTorre(e) {
     const torreEscolhida = e.currentTarget;
-    console.log(torreEscolhida);
 
     validaJogada(torreEscolhida);
 }
@@ -23,9 +19,11 @@ function escolhaTorre(e) {
 const validaJogada = (torreEscolhida) => {
     if (blocoAtual === '' && torreEscolhida.childElementCount !== 0) {
         blocoAtual = torreEscolhida.firstElementChild;
-    } 
-    
-    if (torreEscolhida.childElementCount === 0) {
+    } else if (blocoAtual === '' && torreEscolhida.childElementCount === 0) {
+        mensagem('X', 'red', 1000);
+    }
+
+     else if (torreEscolhida.childElementCount === 0) {
         torreEscolhida.insertAdjacentElement('afterbegin', blocoAtual);
         count++
         blocoAtual = '';
@@ -34,30 +32,32 @@ const validaJogada = (torreEscolhida) => {
         count++
         blocoAtual = '';
     } else if (torreEscolhida.firstElementChild.clientWidth < blocoAtual.clientWidth) {
-        msgErro();
+        mensagem('X', 'red', 1000);
         blocoAtual = '';
-    } 
+    }
 
     movimentos.innerText = `Movimentos: ${count}`;
     final();
 }
 
 // BUTTON START GAME
-const btnStart = document.getElementById('btn-start'); 
+const btnStart = document.getElementById('btn-start');
 const iniciarJogo = () => {
     btnStart.style.display = 'none';
     btnRestart.style.display = 'inline-block';
 
-    for(let i=0; i<torres.length; i++) {
+    for (let i = 0; i < torres.length; i++) {
         torres[i].style.display = 'flex';
     }
-    
-    for(let i=1; i <= 4; i++) {
+
+    for (let i = 1; i <= 4; i++) {
         let bloco = document.createElement('div');
         bloco.classList.add('bloco');
-        bloco.id = 'bloco'+i;
+        bloco.id = 'bloco' + i;
         torres[0].appendChild(bloco);
     }
+
+    movimentos.innerText = `Movimentos: ${count}`;
 }
 btnStart.addEventListener('click', iniciarJogo);
 
@@ -67,10 +67,10 @@ const reiniciarJogo = () => {
     torres.forEach((item) => {
         item.innerHTML = '';
     });
-    
+
     msg.innerText = '';
     count = 0;
-    movimentos.innerText = `Movimentos: ${count}`;;
+    movimentos.innerText = `Movimentos: ${count}`;
 
     iniciarJogo();
 }
@@ -78,20 +78,19 @@ btnRestart.addEventListener('click', reiniciarJogo);
 
 const final = () => {
     if (torres[2].childElementCount === 4) {
-        msg.innerText = 'Conseguiu!!';
-        msg.style.color = 'green';
+        mensagem('Parabéns, você conseguiu!', 'green', 3000)
 
         setTimeout(() => {
             reiniciarJogo();
-        }, 5000);
+        }, 3000);
     }
 }
 
-const msgErro = () => {
-    msg.innerText = 'Jogada Errada';
-        msg.style.color = 'red';
+const mensagem = (texto, cor, tempo) => {
+    msg.innerText = texto;
+    msg.style.color = cor;
 
-        setTimeout(() => {
-            msg.innerText = '';
-        }, 1000);
+    setTimeout(() => {
+        msg.innerText = '';
+    }, tempo);
 }
