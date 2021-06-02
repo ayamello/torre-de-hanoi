@@ -1,14 +1,33 @@
+const main = document.getElementsByTagName('main')[0];
 const msg = document.getElementById('msg');
 const movimentos = document.getElementById('movimentos');
 
-let blocoAtual = '';
-
-let count = 0;
+function criarTorres() {
+    for (let i = 1; i <= 3; i++) {
+        const torre = document.createElement('div');
+        torre.classList.add('.torre');
+        torre.id = 'torre' + i;
+        main.appendChild(torre);
+        console.log(torre);
+    }
+}
 
 const torres = document.querySelectorAll('.torre');
 torres.forEach((item) => {
     item.addEventListener("click", escolhaTorre);
 });
+
+function criarBlocos() {
+    for (let i = 1; i <= 4; i++) {
+        const bloco = document.createElement('div');
+        bloco.classList.add('bloco');
+        bloco.id = 'bloco' + i;
+        torre1.appendChild(bloco);
+    }
+}
+
+let blocoAtual = '';
+let count = 0;
 
 function escolhaTorre(e) {
     const torreEscolhida = e.currentTarget;
@@ -46,16 +65,8 @@ const iniciarJogo = () => {
     btnStart.style.display = 'none';
     btnRestart.style.display = 'inline-block';
 
-    for (let i = 0; i < torres.length; i++) {
-        torres[i].style.display = 'flex';
-    }
-
-    for (let i = 1; i <= 4; i++) {
-        let bloco = document.createElement('div');
-        bloco.classList.add('bloco');
-        bloco.id = 'bloco' + i;
-        torres[0].appendChild(bloco);
-    }
+    criarTorres();
+    criarBlocos();
 
     movimentos.innerText = `Movimentos: ${count}`;
 }
