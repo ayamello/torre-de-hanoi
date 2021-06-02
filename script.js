@@ -99,6 +99,7 @@ const final = () => {
         mensagemFinal();
         clearInterval(conometro);
         main.style.display = 'none';
+        btnRestart = iniciarJogo;
     }
 }
 
