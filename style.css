@@ -1,9 +1,8 @@
 /* GERAL */
-html, body, header, h1, main, div {
+html, body, header, h1, main, div, p, button, span {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -11,7 +10,7 @@ body {
 }
 
 .container{
-    padding-top: 30px;
+    padding-top: 20px;
     text-align: center;
 }
 
@@ -24,16 +23,23 @@ header {
         font-family: 'Londrina Solid';
         text-transform: uppercase;
     }
-    header #counts {
+    header #cabecalho {
         width: 70%;
         margin: 0 auto;
-        text-align: start;
-        font-family: 'Londrina Solid';
-        font-weight: 100;
-        font-size: 1em;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
     }
-        header #counts #movimentos {
-            margin-bottom: -10px;
+        header #counts {
+            font-family: 'Londrina Solid';
+            font-weight: 100;
+            font-size: 1.1em;
+            text-align: left;
+        }
+        header #restart {
+            align-self: center;
+            margin-right: -10px;
         }
 
 /* MAIN */
@@ -44,11 +50,12 @@ main {
     align-items: center;
     justify-content: center;
     margin-top: -10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
     main .torre {
         width: 12px;
         height: 100px;
-        margin: 20px;
+        margin: 15px;
         display: none;
         flex-direction: column;
         align-items: center;
@@ -83,13 +90,13 @@ main {
 /* BUTTONS */
 button {
     border: none;
-    font-size: 20px;
     transition: 0.2s, color 0.2s;
 }
     button:hover {
         cursor: pointer;
     }
 #btn-start {
+    font-size: 20px;
     padding: 10px 40px;
     vertical-align: middle;
     background-color: #7f9c45;
@@ -102,14 +109,16 @@ button {
 
 #btn-restart {
     display: none;
-    padding: 8px 30px;
+    font-size: 15px;
+    padding: 8px 10px;
     margin-bottom: 5px;
-    background-color: #b84644;
-    color: #fff;
+    border-radius: 20%;
+    color: #000;
 }
     #btn-restart:hover {
+        cursor: pointer;
         background-color: #922e2c;
-        
+        color: #fff;
     }
 
 #msg {
@@ -124,12 +133,24 @@ button {
 /* MEDIA QUERIES */
 @media (min-width: 667px) {
     .container{
-        padding-top: 20px;
+        margin: 0 auto;
+        padding-top: 30px;
     }
     /* HEADER */
     header h1 {
         font-size: 100px;   
     }
+    header #cabecalho {
+        width: 85%;
+    }
+        header #counts {
+            display: flex;
+            justify-content: space-between;            
+            font-size: 1.5em;
+        }
+            header #counts #tempo{
+                margin-left: 50px;
+            }
     
     /* MAIN */
     main {
@@ -140,25 +161,48 @@ button {
         main .torre {
             width: 12px;
             height: 215px;
-            margin: 100px; 
+            margin: 80px; 
         }
         main .torre .bloco {
             height: 35px;
         }
             main .torre #bloco1 {
                 width: 65px;
-                background-color: #4576b5;
             }
             main .torre #bloco2 {
                 width: 100px;
-                background-color: #755998;
             }
             main .torre #bloco3 {
                 width: 135px;
-                background-color: #91b24f;
             }
             main .torre #bloco4 {
                 width: 170px;
-                background-color: #b84644;
             }
+}
+
+@media (min-width: 770px) {
+    .container{
+        width: 80%;
+    }
+    header #restart {
+        margin-right: -13px;
+    }
+}
+
+@media (min-width: 847px) {
+    header #cabecalho {
+        width: 80%;
+    }
+    header #restart {
+        margin-right: -13px;
+    }
+}
+
+@media (min-width: 1024px) {
+    header #cabecalho {
+        width: 55%;
+    }
+    main {
+        margin-top: -50px;
+    }
 }
