@@ -123,10 +123,10 @@ const time = () => {
 
     conometro = setInterval(() => {
         cent++;
-        if (cent === 100) {
+        if (cent === 99) {
             segundo++;
             cent = 0;
-            if (segundo === 60) {
+            if (segundo === 59) {
                 minuto++
                 segundo = 0;
             }
@@ -137,20 +137,14 @@ const time = () => {
 }
 
 const showTime = (min, seg, cen) => {
-    // FORMATAÇÃO PARA 2 DIGITOS
-    
-    // if (cen < 10 && seg < 10 && min < 10) {
-    //     timeContent.innerText = `0${min} : 0${seg} : 0${cen}`
-    // }
-    // if (cen < 10 && seg < 10 && min >= 10) {
-    //     timeContent.innerText = `${min} : 0${seg} : 0${cen}`
-    // }
-    // if (cen < 10 && seg >= 10 && min >= 10) {
-    //     timeContent.innerText = `${min} : ${seg} : 0${cen}`
-    // } 
-    // if (cen >= 10 && seg >= 10 && min >= 10) {
-    //     timeContent.innerText = `${min} : ${seg} : ${cen}`
-    // }
-    timeContent.innerText = `${min} : ${seg} : ${cen}`;
+    if (cen < 10 && seg < 10 && min < 10) {
+        timeContent.innerText = `0${min} : 0${seg} : 0${cen}`
+    } else if (cen >= 10 && seg < 10 && min < 10) {
+        timeContent.innerText = `0${min} : 0${seg} : ${cen}`
+    } else if (cen >= 10 && seg >= 10 && min < 10) {
+        timeContent.innerText = `0${min} : ${seg} : ${cen}`
+    } else if (cen >= 10 && seg >= 10 && min >= 10) {
+        timeContent.innerText = `${min} : ${seg} : ${cen}`
+    }
 }
 
