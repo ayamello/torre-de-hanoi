@@ -1,4 +1,4 @@
-const main = document.getElementsByTagName('main')[0];
+const main = document.getElementById('main');
 const divCounts = document.getElementById('counts');
 const msg = document.getElementById('msg');
 const movimentos = document.getElementById('movimentos');

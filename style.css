@@ -45,6 +45,10 @@ header {
 
 /* MAIN */
 main {
+    display: flex;
+    flex-direction: column;
+}
+#main {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -53,7 +57,7 @@ main {
     margin-top: -10px;
     font-family: Arial, Helvetica, sans-serif;
 }
-    main .torre {
+    #main .torre {
         width: 12px;
         height: 100px;
         margin: 20px;
@@ -63,27 +67,27 @@ main {
         justify-content: flex-end;
         background-color: #000;    
     }
-        main .torre:hover {
+        #main .torre:hover {
             cursor: pointer;
         }
-    main .torre .bloco {
+    #main .torre .bloco {
         height: 20px;
         border-radius: 5px;
         border: 2px solid #000;
     }
-        main .torre #bloco1 {
+        #main .torre #bloco1 {
             width: 50px;
             background-color: #4576b5;
         }
-        main .torre #bloco2 {
+        #main .torre #bloco2 {
             width: 70px;
             background-color: #755998;
         }
-        main .torre #bloco3 {
+        #main .torre #bloco3 {
             width: 90px;
             background-color: #91b24f;
         }
-        main .torre #bloco4 {
+        #main .torre #bloco4 {
             width: 110px;
             background-color: #b84644;
         }
@@ -157,34 +161,43 @@ button {
                 margin-left: 50px;
             }
     
-    /* MAIN */
-    main {
+    /* #MAIN */
+    #main {
         display: flex;
         flex-direction: row;
         justify-content: center;
     }
-        main .torre {
+        #main .torre {
             width: 12px;
             height: 215px;
             margin: 80px; 
+            margin-bottom: 0;
         }
-        main .torre .bloco {
+        #main .torre .bloco {
             height: 35px;
         }
-            main .torre #bloco1 {
+            #main .torre #bloco1 {
                 width: 65px;
             }
-            main .torre #bloco2 {
+            #main .torre #bloco2 {
                 width: 100px;
             }
-            main .torre #bloco3 {
+            #main .torre #bloco3 {
                 width: 135px;
             }
-            main .torre #bloco4 {
+            #main .torre #bloco4 {
                 width: 170px;
             }
     #msg {
         font-size: 40px;
+    }
+
+    #base {
+        width: 600px;
+        height: 50px;
+        border-radius: 10px;
+        margin: 0 auto;
+        background-color: rgb(177, 123, 23);
     }
 }
 
@@ -210,7 +223,7 @@ button {
     header #cabecalho {
         width: 55%;
     }
-    main {
+    #main {
         margin-top: 50px;
     }
     #msg {
