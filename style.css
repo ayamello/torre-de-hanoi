@@ -193,6 +193,7 @@ button {
     }
 
     #base {
+        display: none;
         width: 600px;
         height: 50px;
         border-radius: 10px;

@@ -2,6 +2,7 @@ const main = document.getElementById('main');
 const divCounts = document.getElementById('counts');
 const msg = document.getElementById('msg');
 const movimentos = document.getElementById('movimentos');
+const divBase = document.getElementById('base');
 
 // CRIAÇÃO DE TORRES E BLOCOS 
 function criarTorres() {
@@ -28,6 +29,7 @@ const iniciarJogo = () => {
     btnStart.style.display = 'none';
     btnRestart.style.display = 'inline-block';
     divCounts.style.visibility = 'visible';
+    divBase.style.display = 'block';
     criarTorres();
     criarBlocos();
     movimentos.innerText = `Movimentos: ${count}`;
