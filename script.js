@@ -2,21 +2,15 @@ const main = document.getElementsByTagName('main')[0];
 const msg = document.getElementById('msg');
 const movimentos = document.getElementById('movimentos');
 
+// CRIAÇÃO DE TORRES E BLOCOS 
 function criarTorres() {
     for (let i = 1; i <= 3; i++) {
         const torre = document.createElement('div');
-        torre.classList.add('.torre');
+        torre.classList.add('torre');
         torre.id = 'torre' + i;
         main.appendChild(torre);
-        console.log(torre);
     }
 }
-
-const torres = document.querySelectorAll('.torre');
-torres.forEach((item) => {
-    item.addEventListener("click", escolhaTorre);
-});
-
 function criarBlocos() {
     for (let i = 1; i <= 4; i++) {
         const bloco = document.createElement('div');
@@ -25,6 +19,24 @@ function criarBlocos() {
         torre1.appendChild(bloco);
     }
 }
+
+// BUTTON START GAME
+let torres;
+const btnStart = document.getElementById('btn-start');
+const iniciarJogo = () => {
+    btnStart.style.display = 'none';
+    btnRestart.style.display = 'inline-block';
+    criarTorres();
+    criarBlocos();
+    movimentos.innerText = `Movimentos: ${count}`;
+
+    torres = document.querySelectorAll('.torre');
+    torres.forEach((item) => {
+        item.addEventListener("click", escolhaTorre);
+    });
+}
+btnStart.addEventListener('click', iniciarJogo);
+
 
 let blocoAtual = '';
 let count = 0;
@@ -59,19 +71,6 @@ const validaJogada = (torreEscolhida) => {
     final();
 }
 
-// BUTTON START GAME
-const btnStart = document.getElementById('btn-start');
-const iniciarJogo = () => {
-    btnStart.style.display = 'none';
-    btnRestart.style.display = 'inline-block';
-
-    criarTorres();
-    criarBlocos();
-
-    movimentos.innerText = `Movimentos: ${count}`;
-}
-btnStart.addEventListener('click', iniciarJogo);
-
 // BUTTON RESTART GAME
 const btnRestart = document.getElementById('btn-restart');
 const reiniciarJogo = () => {
@@ -83,10 +82,11 @@ const reiniciarJogo = () => {
     count = 0;
     movimentos.innerText = `Movimentos: ${count}`;
 
-    iniciarJogo();
+    criarBlocos();
 }
 btnRestart.addEventListener('click', reiniciarJogo);
 
+// MENSAGEM FINAL
 const final = () => {
     if (torres[2].childElementCount === 4) {
         mensagem('Parabéns, você conseguiu!', 'green', 3000)
@@ -97,6 +97,7 @@ const final = () => {
     }
 }
 
+// CONFIGURAÇÃO DE MENSAGENS (DE ERRO E FINAL)
 const mensagem = (texto, cor, tempo) => {
     msg.innerText = texto;
     msg.style.color = cor;
