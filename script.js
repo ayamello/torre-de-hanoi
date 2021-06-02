@@ -1,4 +1,5 @@
 const main = document.getElementsByTagName('main')[0];
+const divCounts = document.getElementById('counts');
 const msg = document.getElementById('msg');
 const movimentos = document.getElementById('movimentos');
 
@@ -26,6 +27,7 @@ const btnStart = document.getElementById('btn-start');
 const iniciarJogo = () => {
     btnStart.style.display = 'none';
     btnRestart.style.display = 'inline-block';
+    divCounts.style.visibility = 'visible';
     criarTorres();
     criarBlocos();
     movimentos.innerText = `Movimentos: ${count}`;
@@ -66,7 +68,7 @@ const validaJogada = (torreEscolhida) => {
         count++
         blocoAtual = '';
     } else if (torreEscolhida.firstElementChild.clientWidth < blocoAtual.clientWidth) {
-        mensagem('X', 'red', 1000);
+        mensagemErr();
         blocoAtual = '';
     }
 
@@ -94,23 +96,24 @@ btnRestart.addEventListener('click', reiniciarJogo);
 // MENSAGEM FINAL
 const final = () => {
     if (torres[2].childElementCount === 4) {
-        mensagem('Parabéns, você conseguiu!', 'green', 3000);
-        clearInterval(conometro);
-
-        setTimeout(() => {
-            reiniciarJogo();
-        }, 3000);
+        mensagemFinal();
+        clearInterval(conometro);       
     }
 }
 
 // CONFIGURAÇÃO DE MENSAGENS (DE ERRO E FINAL)
-const mensagem = (texto, cor, tempo) => {
-    msg.innerText = texto;
-    msg.style.color = cor;
+const mensagemErr = () => {
+    msg.innerText = 'X';
+    msg.style.color = 'red';
 
     setTimeout(() => {
         msg.innerText = '';
-    }, tempo);
+    }, 1000);
+}
+const mensagemFinal = () => {
+    msg.innerHTML = 'Parabéns, você conseguiu!';
+    msg.style.color = 'green';
+    msg.style.backgroundColor = '#00800092';
 }
 
 const timeContent = document.getElementById('time-content');

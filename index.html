@@ -4,28 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
+    <!--Importações-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;400;900&display=swap" rel="stylesheet">
+    <link rel="font-awesome" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <link rel="stylesheet" href="./style.css">
+
     <title>Torre de Hanoi</title>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Torre <span>de</span> Hanoi</h1>
-            <p id='movimentos'></p>
+            <div id="title">
+                <h1>Torre de Hanoi</h1>
+            </div>
+            
+            <div id="cabecalho">
+                <div id="counts">
+                    <p id='movimentos'>Movimentos: <span>0</span></p>
+                    <p id="time-content">00:00:00</p>
+                </div>
+                <div id="restart">
+                    <button type="button" id="btn-restart">
+                        <i class="fas fa-redo-alt"></i>
+                        Reiniciar
+                    </button>
+                </div>
+            </div>
         </header>
         
         <button type="button" id="btn-start">Iniciar</button>
 
-        <main class="main">
-            <p id="msg"></p>
-        </main>
-        <div id="time-content"></div>
-        <button type="button" id="btn-restart">Reiniciar</button>
+        <p id="msg"></p>
+
+        <main class="main"></main>
     </div>
 
     <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </body>
 </html>
