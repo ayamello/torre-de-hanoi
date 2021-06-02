@@ -25,12 +25,16 @@ header {
         text-transform: uppercase;
     }
     header #counts {
-        width: 60%;
+        width: 70%;
         margin: 0 auto;
+        text-align: start;
         font-family: 'Londrina Solid';
         font-weight: 100;
         font-size: 1em;
     }
+        header #counts #movimentos {
+            margin-bottom: -10px;
+        }
 
 /* MAIN */
 main {
