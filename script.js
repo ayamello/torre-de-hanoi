@@ -53,10 +53,11 @@ function escolhaTorre(e) {
 }
 
 const validaJogada = (torreEscolhida) => {
+    
     if (blocoAtual === '' && torreEscolhida.childElementCount !== 0) {
         blocoAtual = torreEscolhida.firstElementChild;
     } else if (blocoAtual === '' && torreEscolhida.childElementCount === 0) {
-        mensagem('X', 'red', 1000);
+        mensagemErr();
     }
 
      else if (torreEscolhida.childElementCount === 0) {
@@ -90,6 +91,8 @@ const reiniciarJogo = () => {
     criarBlocos();
     clearInterval(conometro);
     time();
+    main.style.pointerEvents = 'visible';
+    msg.style.padding = 0;
 }
 btnRestart.addEventListener('click', reiniciarJogo);
 
@@ -97,6 +100,7 @@ btnRestart.addEventListener('click', reiniciarJogo);
 const final = () => {
     if (torres[2].childElementCount === 4) {
         mensagemFinal();
+        main.style.pointerEvents = 'none';
         clearInterval(conometro);       
     }
 }
@@ -105,6 +109,7 @@ const final = () => {
 const mensagemErr = () => {
     msg.innerText = 'X';
     msg.style.color = 'red';
+    msg.style.backgroundColor = 'none';
 
     setTimeout(() => {
         msg.innerText = '';
@@ -112,8 +117,9 @@ const mensagemErr = () => {
 }
 const mensagemFinal = () => {
     msg.innerHTML = 'Parabéns, você conseguiu!';
-    msg.style.color = 'green';
+    msg.style.color = '#fff';
     msg.style.backgroundColor = '#00800092';
+    msg.style.padding = 20 + 'px';
 }
 
 const timeContent = document.getElementById('time-content');
